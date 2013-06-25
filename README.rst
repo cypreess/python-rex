@@ -1,7 +1,7 @@
 Welcome to python-rex
 =====================
 
-Python REX is regular expressions for humans.
+Python REX is regular expressions for humans. (REX is also abbreviation from re Xtended).
 
 It is for the `re standard module <http://docs.python.org/2/library/index.html>`_ like
 `requests <http://docs.python-requests.org/en/latest/>`_ is for `urllib module <http://docs.python.org/2/library/urllib.html>`_.
