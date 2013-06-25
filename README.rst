@@ -44,6 +44,10 @@ or even::
         print 'Number found'
 
 
+don't worry if you don't find anything::
+
+    >> print ('My lucky 777 number' == rex('m/(?P<number>[0-9]+/'))['no_such_keyword']
+    None
 
 
 And some substitutions::
