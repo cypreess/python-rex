@@ -3,7 +3,7 @@ from distutils.core import setup
 setup(
     name='python-rex',
     version='0.1',
-    packages=['rex'],
+    packages=[],
     url='',
     license='MIT',
     author='Krzysztof Dorosz',
