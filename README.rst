@@ -4,7 +4,7 @@ Welcome to python-rex
 Python REX is regular expressions for humans.
 
 It is for the `re standard module <http://docs.python.org/2/library/index.html>`_ like
-`requests <http://docs.python-requests.org/en/latest/>`_ is for `urllib module<http://docs.python.org/2/library/urllib.html>`_.
+`requests <http://docs.python-requests.org/en/latest/>`_ is for `urllib module <http://docs.python.org/2/library/urllib.html>`_.
 
 REX means also the King, and the King of regular expressions is Perl. So REX API tries to mimic at least some Perl's
 idioms.
