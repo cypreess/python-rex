@@ -1,0 +1,9 @@
+python-rex changelog
+====================
+
+0.1
+---
+
+* initial version
+* matching and substitution
+* tests
