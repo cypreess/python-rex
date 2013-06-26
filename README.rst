@@ -3,8 +3,6 @@ Welcome to python-rex
 
 .. image:: https://pypip.in/v/python-rex/badge.png
    :target: https://crate.io/packages/python-rex
-.. image:: https://pypip.in/d/python-rex/badge.png
-   :target: https://crate.io/packages/python-rex  
 .. image:: https://travis-ci.org/cypreess/python-rex.png?branch=master
    :target: https://travis-ci.org/cypreess/python-rex
    
@@ -14,7 +12,7 @@ Python **rex** is regular expressions for humans. (**rex** is also abbreviation 
 It is for the `re standard module <http://docs.python.org/2/library/index.html>`_ like
 `requests <http://docs.python-requests.org/en/latest/>`_ is for `urllib module <http://docs.python.org/2/library/urllib.html>`_.
 
-**Rex** `means also a king in latin <http://en.wikipedia.org/wiki/Rex>`_, and the king of regular expressions is Perl. 
+**Rex** also is `latin for "king" <http://en.wikipedia.org/wiki/Rex>`_, and the king of regular expressions is Perl. 
 So **rex** API tries to mimic at least some Perl's idioms.
 
 Instalation
@@ -30,6 +28,7 @@ Quickstart
 ==========
 
 So far **rex** supports:
+
 * simple matching (first match),
 * substitution,
 * all python re flags.
