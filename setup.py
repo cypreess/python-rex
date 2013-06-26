@@ -2,8 +2,9 @@ from setuptools import setup
 
 setup(
     name='python-rex',
-    version='0.1',
+    version='0.1.1',
     packages=[],
+    py_modules=['rex'],
     url='',
     license='MIT',
     author='Krzysztof Dorosz',
