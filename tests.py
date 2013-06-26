@@ -50,7 +50,7 @@ class TestRex(unittest.TestCase):
         self.assertEqual(r.replacement, 'ohh')
         self.assertEqual(r.flags, 0)
 
-    def test_s_action(self):
+    def test_s_action_flags(self):
         r = rex('/test/im')
         self.assertEqual(r.action, 'm')
         self.assertEqual(r.pattern, 'test')
