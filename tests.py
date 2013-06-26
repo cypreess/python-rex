@@ -65,3 +65,5 @@ class TestRex(unittest.TestCase):
     def test_s_multi(self):
         self.assertEqual('This is a dog dog dog dog', "This is a cat cat cat cat" == rex('s/cat/dog/'))
 
+if __name__ == '__main__':
+    unittest.main()
