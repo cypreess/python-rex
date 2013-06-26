@@ -15,14 +15,27 @@ It is for the `re standard module <http://docs.python.org/2/library/index.html>`
 **Rex** also is `latin for "king" <http://en.wikipedia.org/wiki/Rex>`_, and the king of regular expressions is Perl. 
 So **rex** API tries to mimic at least some Perl's idioms.
 
-Instalation
+Installation
 ===========
 
 ::
 
     pip install python-rex
 
+or
+
+::
+   
+   pip install -e git+https://github.com/cypreess/python-rex.git#egg=rex-dev
+
 There are no external dependencies. 
+
+
+::
+   
+   from rex import rex
+
+
 
 Quickstart
 ==========
