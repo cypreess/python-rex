@@ -64,13 +64,13 @@ but you can also simply check your much::
 or even or even groups::
 
 
-    if ('My lucky 777 number' == rex('m/(?P<number>[0-9]+/'))['number'] == '777':
+    if ('My lucky 777 number' == rex('m/(?P<number>[0-9]+)/'))['number'] == '777':
         print 'Number found'
 
 
 Don't worry if you don't find anything, it won't brake::
 
-    >> print ('My lucky 777 number' == rex('m/(?P<number>[0-9]+/'))['no_such_keyword']
+    >> print ('My lucky 777 number' == rex('m/(?P<number>[0-9]+)/'))['no_such_keyword']
     None
 
 Substituting
