@@ -96,7 +96,7 @@ it will kindly return ``None`` for whatever you ask::
 Substituting
 ------------
 
-Substitution can be made prepending pattern with ``s`` character (like in perl expression)::
+Substitution can be made by prefixing pattern with ``s`` character (like in perl expression)::
 
     >>> print "This is a cat" == rex('s/CAT/dog/i')
     This is a dog

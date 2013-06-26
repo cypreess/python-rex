@@ -62,6 +62,8 @@ def rex(expression, flags=0):
     replacement = ''
     if action == 's':
         index = pattern.rfind(delimiter)
+        if index in (-1, 0):
+            raise ValueError('Regular expression syntax error.')
         replacement = pattern[index + 1:]
         pattern = pattern[:index]
 

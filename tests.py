@@ -4,12 +4,26 @@ from rex import rex
 
 
 class TestRex(unittest.TestCase):
+
+    def test_value_error(self):
+        self.assertRaises(ValueError, rex, '/test')
+        self.assertRaises(ValueError, rex, 'm/test')
+        self.assertRaises(ValueError, rex, 's/test/')
+        self.assertRaises(ValueError, rex, 's//test/')
+
     def test_no_action(self):
         r = rex('/test/')
         self.assertEqual(r.action, 'm')
         self.assertEqual(r.pattern, 'test')
         self.assertEqual(r.flags, 0)
 
+    def test_str(self):
+        m = "This is dog!" == rex('/[a-z]+!/')
+        self.assertEqual(str(m), 'dog!')
+
+    def test_unicode(self):
+        m = "This is dog!" == rex('/[a-z]+!/')
+        self.assertEqual(unicode(m), u'dog!')
 
     def test_no_action_ex(self):
         r = rex('!test!')
