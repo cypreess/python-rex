@@ -81,9 +81,13 @@ or even groups::
         print 'Number found'
 
 
-Don't worry if you don't find anything, it won't brake::
+Remember a mess with re module when it does not match anything? Rex won't let you down,
+it will kindly return ``None`` for whatever you ask::
 
-    >> print ('My lucky 777 number' == rex('m/(?P<number>[0-9]+)/'))['no_such_keyword']
+    >>> print ('My lucky 777 number' == rex('m/(?P<number>[0-9]+)/'))['no_such_group']
+    None
+
+    >>> print ("I don't tell you my lucky number" == rex('m/(?P<number>[0-9]+)/'))['number']
     None
 
 Substituting
