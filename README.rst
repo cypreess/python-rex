@@ -16,7 +16,7 @@ It is for the `re standard module <http://docs.python.org/2/library/index.html>`
 So **rex** API tries to mimic at least some Perl's idioms.
 
 Installation
-===========
+============
 
 ::
 
@@ -68,13 +68,13 @@ You can use Perl notation and prepend ``m`` character to your search::
         print 'Number found'
 
 
-but you can also simply check your much::
+but you can also simply check your match::
 
 
     if ('My lucky 777 number' == rex('m/[0-9]+/'))[0] == '777':
         print 'Number found'
 
-or even or even groups::
+or even groups::
 
 
     if ('My lucky 777 number' == rex('m/(?P<number>[0-9]+)/'))['number'] == '777':
