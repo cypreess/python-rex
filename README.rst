@@ -3,9 +3,12 @@ Welcome to python-rex
 
 .. image:: https://pypip.in/v/python-rex/badge.png
    :target: https://crate.io/packages/python-rex
+.. image:: https://pypip.in/d/python-rex/badge.png
+   :target: https://crate.io/packages/python-rex
 .. image:: https://travis-ci.org/cypreess/python-rex.png?branch=master
    :target: https://travis-ci.org/cypreess/python-rex
-   
+.. image:: https://coveralls.io/repos/cypreess/python-rex/badge.png?branch=master
+   :target: https://coveralls.io/r/cypreess/python-rex?branch=master
    
 Python **rex** is regular expressions for humans. (**rex** is also abbreviation from **re** **X** tended).
 
