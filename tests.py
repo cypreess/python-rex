@@ -1,10 +1,10 @@
 import re
 import unittest
-from rex import rex
+import rex as rex_module
+from rex import rex, rex_clear_cache
 
 
 class TestRex(unittest.TestCase):
-
     def test_value_error(self):
         self.assertRaises(ValueError, rex, '/test')
         self.assertRaises(ValueError, rex, 'm/test')
@@ -78,6 +78,31 @@ class TestRex(unittest.TestCase):
 
     def test_s_multi(self):
         self.assertEqual('This is a dog dog dog dog', "This is a cat cat cat cat" == rex('s/cat/dog/'))
+
+    def test_cache(self):
+        rex('s/cache/test/')
+
+        self.assertIn('s/cache/test/', rex_module.REX_CACHE)
+
+    def test_cache_2(self):
+        a = rex('s/cache/test/')
+        b = rex('s/cache/test/')
+        self.assertEqual(a is b, True)
+
+    def test_no_cache_2(self):
+        a = rex('s/cache/test/', cache=False)
+        b = rex('s/cache/test/', cache=False)
+        self.assertEqual(a is b, False)
+
+    def test_not_cache(self):
+        rex('s/cache/test1/', cache=False)
+        self.assertNotIn('s/cache/test1/', rex_module.REX_CACHE)
+
+    def test_clear_cache(self):
+        rex('s/cache/test/')
+        rex_clear_cache()
+        self.assertNotIn('s/cache/test/', rex_module.REX_CACHE)
+
 
 if __name__ == '__main__':
     unittest.main()

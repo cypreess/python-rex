@@ -1,4 +1,4 @@
-Welcome to python-rex
+Welcome to python-Rex
 =====================
 
 .. image:: https://pypip.in/v/python-rex/badge.png
@@ -10,13 +10,13 @@ Welcome to python-rex
 .. image:: https://coveralls.io/repos/cypreess/python-rex/badge.png?branch=master
    :target: https://coveralls.io/r/cypreess/python-rex?branch=master
    
-Python **rex** is regular expressions for humans. (**rex** is also abbreviation from **re** **X** tended).
+Python **Rex** is regular expressions for humans. (**Rex** is also abbreviation from **re** **X** tended).
 
-It is for the `re standard module <http://docs.python.org/2/library/index.html>`_ like
+**Rex** is for the `re standard module <http://docs.python.org/2/library/index.html>`_ as
 `requests <http://docs.python-requests.org/en/latest/>`_ is for `urllib module <http://docs.python.org/2/library/urllib.html>`_.
 
-**Rex** also is `latin for "king" <http://en.wikipedia.org/wiki/Rex>`_, and the king of regular expressions is Perl. 
-So **rex** API tries to mimic at least some Perl's idioms.
+**Rex** also is `latin for "king" <http://en.wikipedia.org/wiki/Rex>`_, and the king of regular expressions is Perl.
+So **Rex** API tries to mimic at least some Perl's idioms.
 
 Installation
 ============
@@ -40,14 +40,15 @@ There are no external dependencies.
 
 
 
-Quickstart
-==========
+Quickstart and docs
+===================
 
-So far **rex** supports:
+So far **Rex** supports:
 
 * simple matching (first match),
 * substitution,
 * all python re flags.
+
 
 Matching 
 --------
@@ -93,6 +94,7 @@ it will kindly return ``None`` for whatever you ask::
     >>> print ("I don't tell you my lucky number" == rex('m/(?P<number>[0-9]+)/'))['number']
     None
 
+
 Substituting
 ------------
 
@@ -101,3 +103,22 @@ Substitution can be made by prefixing pattern with ``s`` character (like in perl
     >>> print "This is a cat" == rex('s/CAT/dog/i')
     This is a dog
 
+
+Flags
+-----
+
+Every **Rex** pattern as in Perl patterns allows to suffix some flags, e.g. ``rex('/pattern/iu')`` for enabling ``i`` and ``u`` flag. **Rex** supports all standard python re flags:
+
+* ``d`` - re.DEBUG
+* ``i`` - re.IGNORECASE
+* ``l`` - re.LOCALE
+* ``m`` - re.MULTILINE
+* ``s`` - re.DOTALL
+* ``u`` - re.UNICODE
+* ``x`` - re.VERBOSE
+
+Caching
+-------
+
+**Rex** caches all patterns so reusing patterns is super fast. You can always clear **Rex** cache by calling ``rex_clear_cache()`` or
+disable caching for specific patterns ``rex('/pattern/', cache=False)``.

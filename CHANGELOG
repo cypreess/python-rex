@@ -1,6 +1,14 @@
 python-rex changelog
 ====================
 
+0.2
+---
+* rex caching (as test with csvkit, it can speed up processing heavily reusing same pattern by 10%)
+
+0.1.1
+-----
+* fixing packaging problem
+
 0.1
 ---
 

@@ -2,6 +2,7 @@ from collections import defaultdict
 import re
 import operator
 
+REX_CACHE = {}
 
 class RexMatch(defaultdict):
     def __str__(self):
@@ -47,7 +48,11 @@ class Rex(object):
         return self.__process(other)
 
 
-def rex(expression, flags=0):
+def rex(expression, cache=True):
+    rex_obj = REX_CACHE.get(expression, None)
+    if cache and rex_obj:
+        return rex_obj
+
     action = 'm'
     start = 0
     if expression[start] in 'ms':
@@ -72,6 +77,12 @@ def rex(expression, flags=0):
     except KeyError:
         raise ValueError('Bad flags')
 
-    return Rex(action, pattern, replacement, reduce(operator.or_, re_flags, flags))
+    rex_obj = Rex(action, pattern, replacement, reduce(operator.or_, re_flags, 0))
+    if cache:
+        REX_CACHE[expression] = rex_obj
+    return rex_obj
 
 
+def rex_clear_cache():
+    global REX_CACHE
+    REX_CACHE = {}
