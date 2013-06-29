@@ -40,14 +40,41 @@ There are no external dependencies.
 
 
 
-Quickstart and docs
-===================
+Quickstart
+==========
+
+Do that::
+
+   from rex import rex
+   print ("Your ticket number: XyZ-1047. Have fun!" == rex("/[a-z]{3}-(\d{4})/i"))[1]
+    
+
+instead of doing that::
+
+   import re
+   regex = re.compile("[a-z]{3}-(\d{4})", flags=re.IGNORECASE)
+   m = regex.search("Your ticket number: XyZ-1047. Have fun!")
+   
+   if m is not None:
+      print m.group(1)
+   else:
+   	print None
+   
+   # or in shorter way
+   print m.group(1) if m else None
+
+
+(both should print ``1047``).
+
+Docs
+====
 
 So far **Rex** supports:
 
 * simple matching (first match),
 * substitution,
 * all python re flags.
+
 
 
 Matching 
