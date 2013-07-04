@@ -4,6 +4,7 @@ import operator
 
 REX_CACHE = {}
 
+
 class RexMatch(defaultdict):
     def __str__(self):
         return str(self[0])
@@ -48,10 +49,14 @@ class Rex(object):
         return self.__process(other)
 
 
-def rex(expression, cache=True):
+def rex(expression, text=None, cache=True):
     rex_obj = REX_CACHE.get(expression, None)
     if cache and rex_obj:
-        return rex_obj
+
+        if text is not None:
+            return text == rex_obj
+        else:
+            return rex_obj
 
     action = 'm'
     start = 0
@@ -80,7 +85,11 @@ def rex(expression, cache=True):
     rex_obj = Rex(action, pattern, replacement, reduce(operator.or_, re_flags, 0))
     if cache:
         REX_CACHE[expression] = rex_obj
-    return rex_obj
+
+    if text is not None:
+        return text == rex_obj
+    else:
+        return rex_obj
 
 
 def rex_clear_cache():

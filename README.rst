@@ -58,7 +58,7 @@ instead of doing that::
    if m is not None:
       print m.group(1)
    else:
-   	print None
+      print None
    
    # or in shorter way
    print m.group(1) if m else None
@@ -149,3 +149,18 @@ Caching
 
 **Rex** caches all patterns so reusing patterns is super fast. You can always clear **Rex** cache by calling ``rex_clear_cache()`` or
 disable caching for specific patterns ``rex('/pattern/', cache=False)``.
+
+
+Rex for orthodox
+----------------
+
+If you are so orthodox pythonist that couldn't leave with overloaded ``==`` operator syntax in your codebase,
+you can use "orthodox mode" of rex. Just put the string to match/substitute against as a second argument::
+
+    >>> bool(rex("/dog/", "This is a dog"))
+    True
+    >>> rex("s/cat/dog/", "This is a cat")
+    'This is a dog'
+
+
+

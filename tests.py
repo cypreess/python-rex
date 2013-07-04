@@ -62,13 +62,24 @@ class TestRex(unittest.TestCase):
     def test_m_true(self):
         self.assertTrue("Aa 9-9 88 xx" == rex('/([0-9-]+) (?P<t>[0-9-]+)/'))
 
+    def test_m_true_orthodox(self):
+        self.assertTrue(rex('/([0-9-]+) (?P<t>[0-9-]+)/', "Aa 9-9 88 xx"))
+
     def test_m_false(self):
         self.assertFalse("Aa 9-9  xx" == rex('/([0-9-]+) (?P<t>[0-9-]+)/'))
+
+    def test_m_false_orthodox(self):
+        self.assertFalse(rex('/([0-9-]+) (?P<t>[0-9-]+)/', "Aa 9-9  xx"))
 
     def test_m_value(self):
         self.assertEqual('88', ("Aa 9-9 88 xx" == rex('/([0-9-]+) (?P<t>[0-9-]+)/'))['t'])
         self.assertEqual('88', ("Aa 9-9 88 xx" == rex('/([0-9-]+) (?P<t>[0-9-]+)/'))[2])
         self.assertEqual(None, ("Aa 9-9 88 xx" == rex('/([0-9-]+) (?P<t>[0-9-]+)/'))['tttt'])
+
+    def test_m_value_orthodox(self):
+        self.assertEqual('88', rex('/([0-9-]+) (?P<t>[0-9-]+)/', "Aa 9-9 88 xx")['t'])
+        self.assertEqual('88', rex('/([0-9-]+) (?P<t>[0-9-]+)/', "Aa 9-9 88 xx")[2])
+        self.assertEqual(None, rex('/([0-9-]+) (?P<t>[0-9-]+)/', "Aa 9-9 88 xx")['tttt'])
 
     def test_s(self):
         self.assertEqual('This is a dog', "This is a cat" == rex('s/cat/dog/'))
@@ -78,6 +89,16 @@ class TestRex(unittest.TestCase):
 
     def test_s_multi(self):
         self.assertEqual('This is a dog dog dog dog', "This is a cat cat cat cat" == rex('s/cat/dog/'))
+
+
+    def test_s_orthodox(self):
+        self.assertEqual('This is a dog', rex('s/cat/dog/', "This is a cat"))
+
+    def test_s_i_orthodox(self):
+        self.assertEqual('This is a dog', rex('s/CAT/dog/i', "This is a cat"))
+
+    def test_s_multi_orthodox(self):
+        self.assertEqual('This is a dog dog dog dog', rex('s/cat/dog/', "This is a cat cat cat cat"))
 
     def test_cache(self):
         rex('s/cache/test/')
