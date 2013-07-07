@@ -65,6 +65,10 @@ class TestRex(unittest.TestCase):
     def test_m_true_orthodox(self):
         self.assertTrue(rex('/([0-9-]+) (?P<t>[0-9-]+)/', "Aa 9-9 88 xx"))
 
+    def test_m_false_noncache(self):
+        self.assertTrue(rex('/([0-9-]+) (?P<t>[0-9-]+)/', "Aa 9-9 88 xx", cache=False))
+        self.assertFalse(rex('/([0-9-]+) (?P<t>[0-9-]+)/', "Aa bb cc xx", cache=False))
+
     def test_m_false(self):
         self.assertFalse("Aa 9-9  xx" == rex('/([0-9-]+) (?P<t>[0-9-]+)/'))
 
