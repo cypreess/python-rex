@@ -1,6 +1,10 @@
 python-rex changelog
 ====================
 
+0.3
+---
+* rex orthodox mode (using rex without == operator)
+
 0.2
 ---
 * rex caching (as test with csvkit, it can speed up processing heavily reusing same pattern by 10%)
