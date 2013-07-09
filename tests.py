@@ -1,7 +1,7 @@
 import re
 import unittest
 import rex as rex_module
-from rex import rex, rex_clear_cache
+from rex import rex, rex_clear_cache, RexMatch
 
 
 class TestRex(unittest.TestCase):
@@ -21,9 +21,18 @@ class TestRex(unittest.TestCase):
         m = "This is dog!" == rex('/[a-z]+!/')
         self.assertEqual(str(m), 'dog!')
 
+
+    def test_empty_str(self):
+        m = "This is dog!" == rex('/[0-9]+!/')
+        self.assertEqual(str(m), '')
+
     def test_unicode(self):
         m = "This is dog!" == rex('/[a-z]+!/')
         self.assertEqual(unicode(m), u'dog!')
+
+    def test_empty_unicode(self):
+        m = "This is dog!" == rex('/[0-9]+!/')
+        self.assertEqual(unicode(m), u'')
 
     def test_no_action_ex(self):
         r = rex('!test!')
@@ -128,6 +137,20 @@ class TestRex(unittest.TestCase):
         rex_clear_cache()
         self.assertNotIn('s/cache/test/', rex_module.REX_CACHE)
 
+
+    def test_rex_match(self):
+        rm = RexMatch(((0, 'some match'), ('a', 1), ('b', 2)))
+        self.assertEqual(rm['a'], 1)
+        self.assertEqual(rm['b'], 2)
+        self.assertEqual(str(rm), 'some match')
+        self.assertEqual(unicode(rm), u'some match')
+
+    def test_rex_match_empty(self):
+        rm = RexMatch()
+        self.assertEqual(rm['a'], None)
+        self.assertEqual(rm['b'], None)
+        self.assertEqual(str(rm), '')
+        self.assertEqual(unicode(rm), u'')
 
 if __name__ == '__main__':
     unittest.main()

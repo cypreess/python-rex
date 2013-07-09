@@ -1,6 +1,10 @@
 python-rex changelog
 ====================
 
+dev
+---
+* RexMatch refactoring and bug fix (empty match is represented as empty string)
+
 0.3
 ---
 * rex orthodox mode (using rex without == operator)

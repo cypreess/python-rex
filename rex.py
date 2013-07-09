@@ -5,12 +5,24 @@ import operator
 REX_CACHE = {}
 
 
-class RexMatch(defaultdict):
+class RexMatch(dict):
+    """
+    Dummy defaultdict implementation of matched strings. Returns `None`
+    for unknown keys.
+    """
+
+    def __getitem__(self, y):
+        try:
+            return super(RexMatch, self).__getitem__(y)
+        except KeyError:
+            return None
+
     def __str__(self):
-        return str(self[0])
+        return str(self[0]) if self[0] else ''
 
     def __unicode__(self):
-        return unicode(self[0])
+        return unicode(self[0]) if self[0] else u''
+
 
 
 class Rex(object):
@@ -34,7 +46,7 @@ class Rex(object):
 
     def __process(self, text):
         if self.action == 'm':
-            result = RexMatch(lambda: None)
+            result = RexMatch()
             match = self.re.search(text)
             if match is not None:
                 result[0] = match.group()
