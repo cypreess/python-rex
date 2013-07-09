@@ -17,6 +17,10 @@ class RexMatch(dict):
         except KeyError:
             return None
 
+    def get(self, k, d=None):
+        ret = super(RexMatch, self).get(k, d)
+        return d if ret is None else ret
+
     def __str__(self):
         return str(self[0]) if self[0] else ''
 

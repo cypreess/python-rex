@@ -3,6 +3,10 @@ python-rex changelog
 
 dev
 ---
+* RexMatch bug fix (default value when using get())
+
+0.3.1
+-----
 * RexMatch refactoring and bug fix (empty match is represented as empty string)
 
 0.3
