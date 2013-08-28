@@ -3,6 +3,7 @@ python-rex changelog
 
 dev
 ---
+* Added attribute "group" to rex function object holding last regex's RexMatch object
 * RexMatch bug fix (default value when using get())
 
 0.3.1
