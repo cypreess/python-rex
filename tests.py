@@ -174,6 +174,10 @@ class TestRex(unittest.TestCase):
         self.assertEqual(rm.get('a', 'b'), 'b')
         self.assertEqual(rm.get('c', 'b'), 'b')
 
+    def test_rex_group(self):
+        m = "This is cat! A kitten is a cat but not a dog." == rex('/[a-z]+!.*(kitten\s\S{2}).*but.*(dog)\./')
+        self.assertEqual(m, rex.group)
+
 
 if __name__ == '__main__':
     unittest.main()

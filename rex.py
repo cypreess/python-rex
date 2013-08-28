@@ -1,4 +1,3 @@
-from collections import defaultdict
 import re
 import operator
 
@@ -28,7 +27,6 @@ class RexMatch(dict):
         return unicode(self[0]) if self[0] else u''
 
 
-
 class Rex(object):
     FLAGS = {
         'd': re.DEBUG,
@@ -47,15 +45,14 @@ class Rex(object):
         self.replacement = replacement
         self.re = re.compile(self.pattern, self.flags)
 
-
     def __process(self, text):
         if self.action == 'm':
             result = RexMatch()
             match = self.re.search(text)
             if match is not None:
+                rex.group = result
                 result[0] = match.group()
-                for i, m in enumerate(match.groups()):
-                    result[i + 1] = m
+                result.update(enumerate(match.groups(), start=1))
                 result.update(match.groupdict())
             return result
         elif self.action == 's':
@@ -106,6 +103,7 @@ def rex(expression, text=None, cache=True):
         return text == rex_obj
     else:
         return rex_obj
+rex.group = RexMatch()
 
 
 def rex_clear_cache():
