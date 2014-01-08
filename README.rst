@@ -162,5 +162,12 @@ you can use "orthodox mode" of rex. Just put the string to match/substitute agai
     >>> rex("s/cat/dog/", "This is a cat")
     'This is a dog'
 
+Additionally Rex objects are callable. This is especially useful in situations where you need to process many values
+against the same regular expression::
 
-
+    >>> my_re = rex("/foo/")
+    >>> for thing in ["foobar", "bar", "barfoo"]:
+    ...     print bool(my_re(thing))
+    True
+    False
+    True

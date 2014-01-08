@@ -107,6 +107,14 @@ class TestRex(unittest.TestCase):
                          rex('/([0-9-]+) (?P<t>[0-9-]+)/', "Aa 9-9 88 xx")[
                              'tttt'])
 
+    def test_m_true_call(self):
+        r = rex('/([0-9-]+) (?P<t>[0-9-]+)/')
+        self.assertTrue(r("Aa 9-9 88 xx"))
+
+    def test_m_false_call(self):
+        r = rex('/([0-9-]+) (?P<t>[0-9-]+)/')
+        self.assertFalse(r("Aa 9-9  xx"))
+
     def test_s(self):
         self.assertEqual('This is a dog', "This is a cat" == rex('s/cat/dog/'))
 

@@ -61,6 +61,9 @@ class Rex(object):
     def __eq__(self, other):
         return self.__process(other)
 
+    def __call__(self, text):
+        return self.__process(text)
+
 
 def rex(expression, text=None, cache=True):
     rex_obj = REX_CACHE.get(expression, None)
