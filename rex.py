@@ -1,5 +1,6 @@
 import re
 import operator
+from six.moves import reduce
 
 REX_CACHE = {}
 
@@ -95,7 +96,7 @@ def rex(expression, text=None, cache=True):
 
     try:
         re_flags = map(lambda f: Rex.FLAGS[f], expression[end + 1:])
-    except KeyError:
+    except KeyError as exc:
         raise ValueError('Bad flags')
 
     rex_obj = Rex(action, pattern, replacement, reduce(operator.or_, re_flags, 0))

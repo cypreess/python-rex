@@ -1,5 +1,6 @@
 import re
 import unittest
+import six
 import rex as rex_module
 from rex import rex, rex_clear_cache, RexMatch
 
@@ -28,11 +29,11 @@ class TestRex(unittest.TestCase):
 
     def test_unicode(self):
         m = "This is dog!" == rex('/[a-z]+!/')
-        self.assertEqual(unicode(m), u'dog!')
+        self.assertEqual(six.u(m), u'dog!')
 
     def test_empty_unicode(self):
         m = "This is dog!" == rex('/[0-9]+!/')
-        self.assertEqual(unicode(m), u'')
+        self.assertEqual(six.u(m), u'')
 
     def test_no_action_ex(self):
         r = rex('!test!')
@@ -167,14 +168,14 @@ class TestRex(unittest.TestCase):
         self.assertEqual(rm['a'], 1)
         self.assertEqual(rm['b'], 2)
         self.assertEqual(str(rm), 'some match')
-        self.assertEqual(unicode(rm), u'some match')
+        self.assertEqual(six.u(rm), u'some match')
 
     def test_rex_match_empty(self):
         rm = RexMatch()
         self.assertEqual(rm['a'], None)
         self.assertEqual(rm['b'], None)
         self.assertEqual(str(rm), '')
-        self.assertEqual(unicode(rm), u'')
+        self.assertEqual(six.u(rm), u'')
 
     def test_rex_match_get_empty(self):
         rm = RexMatch((('c', None),))

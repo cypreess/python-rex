@@ -10,6 +10,7 @@ setup(
     author='Krzysztof Dorosz',
     author_email='cypreess@gmail.com',
     description='Python regular expressions for humans',
+    requires=['six'],
     classifiers=(
         'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
@@ -17,5 +18,5 @@ setup(
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python',
         'Programming Language :: Python :: 2.7',
-    )
+    ),
 )
