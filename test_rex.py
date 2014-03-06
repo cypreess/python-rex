@@ -1,17 +1,16 @@
 # import unittest
 import re
 
-from pytest import raises
-
+import pytest 
 import rex as rex_module
 from rex import rex_clear_cache, RexMatch, rex
 
 
 def test_value_error():
-    raises(ValueError, rex, '/test')
-    raises(ValueError, rex, 'm/test')
-    raises(ValueError, rex, 's/test/')
-    raises(ValueError, rex, 's//test/')
+    pytest.raises(ValueError, rex, '/test')
+    pytest.raises(ValueError, rex, 'm/test')
+    pytest.raises(ValueError, rex, 's/test/')
+    pytest.raises(ValueError, rex, 's//test/')
 
 
 def test_no_action():
@@ -205,3 +204,6 @@ def test_rex_match_get_empty():
 def test_rex_group():
     m = "This is cat! A kitten is a cat but not a dog." == rex('/[a-z]+!.*(kitten\s\S{2}).*but.*(dog)\./')
     assert m == rex.group
+
+if __name__ == "__main__":
+    pytest.main()

@@ -5,6 +5,6 @@ python:
 install:
   - pip install -q -e .
   - pip install pytest coverage coveralls --use-mirrors
-script: coverage run --source=rex py.test
+script: coverage run --source=rex test_rex.py
 after_success:
   - coveralls
