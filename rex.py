@@ -1,6 +1,7 @@
 import re
 import operator
 from six.moves import reduce
+import six
 
 REX_CACHE = {}
 
@@ -25,7 +26,7 @@ class RexMatch(dict):
         return str(self[0]) if self[0] else ''
 
     def __unicode__(self):
-        return unicode(self[0]) if self[0] else u''
+        return six.u(self[0]) if self[0] else u''
 
 
 class Rex(object):
@@ -96,7 +97,7 @@ def rex(expression, text=None, cache=True):
 
     try:
         re_flags = map(lambda f: Rex.FLAGS[f], expression[end + 1:])
-    except KeyError as exc:
+    except KeyError:
         raise ValueError('Bad flags')
 
     rex_obj = Rex(action, pattern, replacement, reduce(operator.or_, re_flags, 0))
