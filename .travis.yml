@@ -3,7 +3,7 @@ python:
   - "2.7"
   - "3.3"
 install:
-  - pip install -q -e .
+  - pip install -e .
   - pip install pytest coverage coveralls --use-mirrors
 script: coverage run --source=rex test_rex.py
 after_success:

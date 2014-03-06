@@ -10,7 +10,7 @@ setup(
     author='Krzysztof Dorosz',
     author_email='cypreess@gmail.com',
     description='Python regular expressions for humans',
-    requires=['six'],
+    install_requires=['six'],
     classifiers=(
         'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
