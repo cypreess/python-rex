@@ -18,6 +18,8 @@ Python **Rex** is regular expressions for humans. (**Rex** is also abbreviation 
 **Rex** also is `latin for "king" <http://en.wikipedia.org/wiki/Rex>`_, and the king of regular expressions is Perl.
 So **Rex** API tries to mimic at least some Perl's idioms.
 
+Supported Python versions: 2.6, 2.7, 3.3
+
 Installation
 ============
 

@@ -1,7 +1,6 @@
-# import unittest
 import re
 
-import pytest 
+import pytest
 import rex as rex_module
 from rex import rex_clear_cache, RexMatch, rex
 
@@ -76,10 +75,10 @@ def test_s_action_flags():
     assert r.flags == re.I | re.M
 
 
-#
-#     # def test_s_action_bad():
-#     #     self.assertRaises(ValueError, rex, '/test/imH')
-#
+def test_s_action_bad():
+    pytest.raises(ValueError, rex, '/test/imH')
+
+
 def test_m_true():
     assert ("Aa 9-9 88 xx" == rex('/([0-9-]+) (?P<t>[0-9-]+)/'))
 
@@ -204,6 +203,7 @@ def test_rex_match_get_empty():
 def test_rex_group():
     m = "This is cat! A kitten is a cat but not a dog." == rex('/[a-z]+!.*(kitten\s\S{2}).*but.*(dog)\./')
     assert m == rex.group
+
 
 if __name__ == "__main__":
     pytest.main()

@@ -96,7 +96,7 @@ def rex(expression, text=None, cache=True):
         pattern = pattern[:index]
 
     try:
-        re_flags = map(lambda f: Rex.FLAGS[f], expression[end + 1:])
+        re_flags = [Rex.FLAGS[f] for f in expression[end + 1:]]
     except KeyError:
         raise ValueError('Bad flags')
 
