@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='python-rex',
-    version='0.3.1',
+    version='0.4',
     packages=[],
     py_modules=['rex'],
     url='https://github.com/cypreess/python-rex',
