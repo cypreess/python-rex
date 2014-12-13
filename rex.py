@@ -1,6 +1,5 @@
 import re
 import operator
-from six.moves import reduce
 import six
 
 REX_CACHE = {}
