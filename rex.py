@@ -40,15 +40,20 @@ class Rex(object):
         'x': re.VERBOSE,
     }
 
-    def __init__(self, action, pattern, replacement='', flags=0):
+    EXTRA_FLAGS = 'g'
+
+    def __init__(self, action, pattern, replacement='', flags=0, extra_flags=''):
         self.action = action
         self.pattern = pattern
         self.flags = flags
+        self.extra_flags = extra_flags
         self.replacement = replacement
         self.re = re.compile(self.pattern, self.flags)
 
     def __process(self, text):
         if self.action == 'm':
+            if 'g' in self.extra_flags:
+                return self.re.findall(text)
             result = RexMatch()
             match = self.re.search(text)
             if match is not None:
@@ -95,12 +100,17 @@ def rex(expression, text=None, cache=True):
         replacement = pattern[index + 1:]
         pattern = pattern[:index]
 
-    try:
-        re_flags = [Rex.FLAGS[f] for f in expression[end + 1:]]
-    except KeyError:
-        raise ValueError('Bad flags')
+    flags = 0
+    extra_flags = ''
+    for f in expression[end + 1:]:
+        if f in Rex.FLAGS:
+            flags |= Rex.FLAGS[f]
+        elif f in Rex.EXTRA_FLAGS:
+            extra_flags += f
+        else:
+            raise ValueError('Bad flags')
 
-    rex_obj = Rex(action, pattern, replacement, reduce(operator.or_, re_flags, 0))
+    rex_obj = Rex(action, pattern, replacement, flags, extra_flags)
     if cache:
         REX_CACHE[expression] = rex_obj
 

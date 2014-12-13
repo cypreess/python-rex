@@ -146,6 +146,12 @@ Every **Rex** pattern as in Perl patterns allows to suffix some flags, e.g. ``re
 * ``u`` - re.UNICODE
 * ``x`` - re.VERBOSE
 
+Extra flags
+-----------
+
+Extra ``g`` flags means that **Rex** returns the list of all matched strings.
+
+
 Caching
 -------
 
