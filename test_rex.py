@@ -122,6 +122,12 @@ def test_m_false_call():
     assert not r("Aa 9-9  xx")
 
 
+def test_m_g():
+    assert (("Aa 9-9 88 xx" == rex('/(\d)/g')) == ['9', '9', '8', '8'])
+    assert (("Aa 9-9 88 xx" == rex('/([aA])/g')) == ['A', 'a'])
+    assert (("Aa 9-9 88 xx" == rex('/(ttt)/g')) == [])
+
+
 def test_s():
     s = ("This is a cat" == rex('s/cat/dog/'))
     assert s == 'This is a dog'
